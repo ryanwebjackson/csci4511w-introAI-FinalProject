@@ -9,7 +9,7 @@ TODO:
 4. Analyze results
 5. Draw conclusions, and finish write-up
 
-Through iterative experimentation, several specific approaches will be tried, and the results will be compared. Below are the current ideas I have for these:
+*Through iterative experimentation, several specific approaches will be tried, and the results will be compared. Below are the current ideas I have for these:*
 - Mini-Max (with and without A-B pruning)
 - Genetic algorithms (2 forms)
 - Reinforcement learning
