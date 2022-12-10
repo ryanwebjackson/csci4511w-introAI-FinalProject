@@ -10,10 +10,9 @@ TODO:
 5. Draw conclusions, and finish write-up
 
 Through iterative experimentation, several specific approaches will be tried, and the results will be compared. Below are the current ideas I have for these:
-\begin{itemize}
-    \item Mini-Max (with and without A-B pruning)
-    \item Genetic algorithms (2 forms)
-    \item Reinforcement learning
-    \item Monte-Carlo Tree Search
-    \item Random activity from both agents - serves as a control group
+- Mini-Max (with and without A-B pruning)
+- Genetic algorithms (2 forms)
+- Reinforcement learning
+- Monte-Carlo Tree Search
+- Random activity from both agents - serves as a control group
 \end{itemize}
