@@ -1,0 +1,5 @@
+Copyright 2022 (c) Ryan William Jackson.
+
+This license permits you to use the code for educational, personal learning, or research purposes.
+Use of the code for commercial purposes is prohibited.
+You are allowed to contact me with questions or comments about the code, or about the project thereof.
