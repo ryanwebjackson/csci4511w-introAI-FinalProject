@@ -3,8 +3,17 @@
 ## Search for optimal fitness plan for pet animal
 
 TODO:
-- Determine algorithms used for solution search - adversarial search first
-- Determine how to interact with the user/consuming researcher/peer - candidate: Jupyter IPython notebooks
-- Run experiments (simulations and real-world)
-- Analyze results
-- Draw conclusions, and finish write-up
+1. ~~Determine algorithms used for solution search - adversarial search first~~
+2. Determine how to interact with the user/consuming researcher/peer - candidate: Jupyter IPython notebooks
+3. Run experiments (simulations and real-world)
+4. Analyze results
+5. Draw conclusions, and finish write-up
+
+Through iterative experimentation, several specific approaches will be tried, and the results will be compared. Below are the current ideas I have for these:
+\begin{itemize}
+    \item Mini-Max (with and without A-B pruning)
+    \item Genetic algorithms (2 forms)
+    \item Reinforcement learning
+    \item Monte-Carlo Tree Search
+    \item Random activity from both agents - serves as a control group
+\end{itemize}
