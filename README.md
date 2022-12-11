@@ -12,7 +12,8 @@ TODO:
 
 *Through iterative experimentation, several specific approaches will be tried, and the results will be compared. Below are the current ideas I have for these:*
 - Mini-Max (with and without A-B pruning, to see the performance (comp. and memory) difference)
-- Genetic algorithms (2 forms)
+- Genetic algorithms (2 forms)  
+Note on verbiage (problem framing): https://www.sciencedirect.com/science/article/pii/S016518890000066X
 - Reinforcement learning
 - Monte-Carlo Tree Search
 - Random activity from both agents - serves as a control group
