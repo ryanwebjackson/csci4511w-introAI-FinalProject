@@ -28,20 +28,23 @@ class LazyAnimalMinimaxGame1(games.Game):
     However, leaving this class named with an ordinal to show that there may be other state transition trees possible for this problem.
     """
 
-    # TODO: Replace the below definitions with your own,
-    #  defined by one possible state transition tree for the given problem.
+    # TODO: Clarify why the following state transition tree is valid,
+    # or create a new one that is valid.
 
     # Assume that the animal agent starts (the day/experiment) in the bedroom, and is hungry.
     initial = 'A'
+    # First-level (root): A (MAX)
+    # Second-level: B, C, D (MIN)
+    # Third-level: E, B2, F, G, H, D2
+    # Fourth-level: E1, E2, F1, F2, G1, G2, H1, H2, H3
     successors = dict(A=LazyAnimalStateHelper.get_state_children_a(),
                       B=LazyAnimalStateHelper.get_state_children_b(),
-                      C=dict(c1=LazyAnimalState('F'), c2=LazyAnimalState('G')),
+                      C=dict(c1=LazyAnimalState('F', is_max=True), c2=LazyAnimalState('G', is_max=True)),
                       D=dict(d1=LazyAnimalState('H', True), d2=LazyAnimalState('D2', True)),
-                      E=dict(e1=LazyAnimalState('E1'), e2=LazyAnimalState('E2')),
-                      F=dict(f1=LazyAnimalState('F1', True), f2=LazyAnimalState('F2', True)),
+                      E=dict(e1=LazyAnimalState('E1'), e2=LazyAnimalState('E2')),  # E's children are MIN nodes.
+                      F=dict(f1=LazyAnimalState('F1'), f2=LazyAnimalState('F2')),
                       G=dict(g1=LazyAnimalState('G1'), g2=LazyAnimalState('G2')),
-                      H=dict(h1=LazyAnimalState('H1', True), h2=LazyAnimalState('H2', True),
-                             h3=LazyAnimalState('H3', True))
+                      H=dict(h1=LazyAnimalState('H1'), h2=LazyAnimalState('H2'), h3=LazyAnimalState('H3'))
                       )
     # Note: Can clean up the code above later - may or may not need the helper functions.
 
@@ -65,8 +68,10 @@ class LazyAnimalMinimaxGame1(games.Game):
         if ret:
             # [jack1805] Not seeing this as true. 11 Dec 2022
             # Checked in max_value and min_value of alpha_beta_search in games.py
-            print("testing")
+            print("terminal_test: true")
             # PyUtilityFunctions.print_traceback()
+        else:
+            print("terminal_test: false")
 
         return ret
 

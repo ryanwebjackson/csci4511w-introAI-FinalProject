@@ -26,6 +26,11 @@ def main():
 
     ab_search_result = alpha_beta_search(initial_state, game)
     print('ab_search_result: ', ab_search_result)
+    # Best Action (key) is returned from 'alpha_beta_search', but not the terminal state that it leads to.
+    # Also note that it's possible that a goal state is not reached - seeing this happen.
+    # Ideal: Return the whole path, from initial state to terminal state (and if goal was reached).
+    #
+    # Goal is not being reached because current_animal_kcalories is not being updated.
 
 
 if __name__ == '__main__':
