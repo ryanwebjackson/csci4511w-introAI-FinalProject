@@ -3,7 +3,7 @@
 ## Search for optimal fitness plan for pet animal
 
 TODO:
-1. ~~Determine algorithms used for solution search - adversarial search first~~
+1. ~~Determine algorithms used for solution search - adversarial search first~~  
 1.5. Define the problem ("game") formally: What are the states and actions? What is the initial state, goal state, and what are the constraints on transitions between states?
 2. Determine how to interact with the user/consuming researcher/peer - candidate: Jupyter IPython notebooks
 3. Run experiments (simulations and real-world)
