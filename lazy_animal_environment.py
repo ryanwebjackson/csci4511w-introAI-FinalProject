@@ -1,7 +1,7 @@
-from agents import *
+import agents  # type: ignore
 
 
-class LazyAnimalEnvironment(XYEnvironment):
+class LazyAnimalEnvironment(agents.XYEnvironment):
     """
     [jack1805] Might not be perfect (not sure about "holding"), but starting with the XYEnvironment,
     to create a simple environment for the lazy animal to move around in.

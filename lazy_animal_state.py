@@ -1,3 +1,6 @@
+from typing import *
+
+
 class Location:
     pass
 
@@ -8,10 +11,15 @@ class LazyAnimalState:
     Legal actions are also handled by the same class (object).
     """
     def __init__(self):
+
         self._toys = None
         self._food = None
         self.human_location = None
         self.animal_location = None
+        # TODO: Set per each new state.
+        self.is_max = False
+        # TODO: Set per each new state.
+        self.tree_key = None
         # Not sure where to set this (target_animal_kcalories), so that it makes sense.
         # We don't want to start at the goal state, so we need to set it so that current and target are not initially equal.
         # Could something like float('inf'), and re-set it when the Game gets started.
@@ -49,7 +57,7 @@ class LazyAnimalState:
     def get_food(self):
         return self._food
 
-    def set_food(self, value: [(Location, int, bool)]):
+    def set_food(self, value: List[Tuple[Location, int, bool]]):
         self._food = value
 
     def del_food(self):
@@ -58,7 +66,7 @@ class LazyAnimalState:
     def get_toys(self):
         return self._toys
 
-    def set_toys(self, value: [(Location, int, bool)]):
+    def set_toys(self, value: List[Tuple[Location, int, bool]]):
         """
         integer in the tuple is the amount of KCalories burned by playing with the toy at the given location.
         boolean in the tuple is IsPlayedWith.
