@@ -1,6 +1,6 @@
 # csci4511w-introAI-FinalProject
 
-IMMEDIATE TODO: Determine by terminal_test result is always false.  
+**IMMEDIATE TODO: Determine by terminal_test result is always false.**  
 
 ## Search for optimal fitness plan for pet animal
 
