@@ -11,7 +11,7 @@ TODO:
 5. Draw conclusions, and finish write-up
 
 *Through iterative experimentation, several specific approaches will be tried, and the results will be compared. Below are the current ideas I have for these:*
-- Mini-Max (with and without A-B pruning)
+- Mini-Max (with and without A-B pruning, to see the performance (comp. and memory) difference)
 - Genetic algorithms (2 forms)
 - Reinforcement learning
 - Monte-Carlo Tree Search
