@@ -1,3 +1,5 @@
+from typing import List
+
 import games  # type: ignore
 from lazy_animal_state import LazyAnimalState
 from lazy_animal_state_helper import LazyAnimalStateHelper
@@ -41,7 +43,7 @@ class LazyAnimalMinimaxGame1(games.Game):
     # Second-level successors:
     utils = LazyAnimalStateHelper.get_terminal_states_for_tree1()
 
-    def actions(self, state: LazyAnimalState):
+    def actions(self, state: LazyAnimalState) -> List[str]:
         return list(self.successors.get(state.tree_key, {}).keys())
 
     def result(self, state: LazyAnimalState, move):

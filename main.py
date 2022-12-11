@@ -1,5 +1,7 @@
 import sys
 
+from lazy_animal_state import LazyAnimalState
+
 sys.path.append('aima-python')
 # from logic import * # Doesn't appear to be used.
 
@@ -18,7 +20,12 @@ class MainHelper:
 def main():
 
     game = LazyAnimalMinimaxGame1()
-    ab_search_result = alpha_beta_search('A', game)
+
+    initial_state = LazyAnimalState()
+    initial_state.tree_key = 'A'
+    initial_state.is_max = True
+
+    ab_search_result = alpha_beta_search(initial_state, game)
     print('ab_search_result: ', ab_search_result)
 
 
