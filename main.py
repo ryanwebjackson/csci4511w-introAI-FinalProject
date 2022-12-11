@@ -3,7 +3,6 @@ import sys
 from lazy_animal_state import LazyAnimalState
 
 sys.path.append('aima-python')
-# from logic import * # Doesn't appear to be used.
 
 from games import alpha_beta_search  # type: ignore
 from lazy_animal_minimax_game1 import LazyAnimalMinimaxGame1

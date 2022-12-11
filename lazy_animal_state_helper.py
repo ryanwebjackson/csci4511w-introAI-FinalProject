@@ -1,3 +1,6 @@
+from lazy_animal_state import LazyAnimalState
+
+
 class LazyAnimalStateHelper:
     @staticmethod
     def get_terminal_states_for_tree1() -> dict:
@@ -22,4 +25,16 @@ class LazyAnimalStateHelper:
 
     @staticmethod
     def get_state_children_a() -> dict:
-        return dict(a1='B', a2='C', a3='D')
+        return dict(
+            a1=LazyAnimalState('B', is_max=False),
+            a2=LazyAnimalState('C', is_max=False),
+            a3=LazyAnimalState('D', is_max=False)
+        )
+
+    @staticmethod
+    def get_state_children_b() -> dict:
+        return dict(
+            b1=LazyAnimalState('E', is_max=True),
+            b2=LazyAnimalState('B2', is_max=True)
+        )
+
