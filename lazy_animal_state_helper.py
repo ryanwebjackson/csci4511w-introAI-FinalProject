@@ -18,20 +18,35 @@ class LazyAnimalStateHelper:
         e2 = LazyAnimalState("E2", False)
         e2.current_animal_kcalories = e2.target_animal_kcalories  # Simulates perfect match of calories - goal achieved.
         # TODO: Move target_animal_kcalories out (to the LazyAnimalStateHelper class).
+        f1 = LazyAnimalState("F1", False)
+        f1.current_animal_kcalories = 25
+        f2 = LazyAnimalState("F2", False)
+        f2.current_animal_kcalories = 30
+        g1 = LazyAnimalState("G1", False)
+        g1.current_animal_kcalories = 35
+        g2 = LazyAnimalState("G2", False)
+        g2.current_animal_kcalories = 40
+        d2 = LazyAnimalState("D2", True)  # D2 is one level higher, but is still a terminal state.
+        d2.current_animal_kcalories = 51
+        # 1 calorie over the target. Should be close enough, but will not currently satisfy the terminal_test.
+        h1 = LazyAnimalState("H1", False)
+        h1.current_animal_kcalories = 45
+        h2 = LazyAnimalState("H2", False)
+        h2.current_animal_kcalories = 55
+        h3 = LazyAnimalState("H3", False)
+        h3.current_animal_kcalories = 60
         return dict([
             (b2.tree_key, b2.current_animal_kcalories),
             (e1.tree_key, e1.current_animal_kcalories),
-            (e2.tree_key, e2.current_animal_kcalories)
-            # TODO: Add the rest of the terminal states.
-            # E2=1,
-            # F1=3,
-            # F2=2,
-            # G1=1,
-            # G2=3,
-            # D2=2,
-            # H1=1,
-            # H2=2,
-            # H3=4
+            (e2.tree_key, e2.current_animal_kcalories),
+            (f1.tree_key, f1.current_animal_kcalories),
+            (f2.tree_key, f2.current_animal_kcalories),
+            (g1.tree_key, g1.current_animal_kcalories),
+            (g2.tree_key, g2.current_animal_kcalories),
+            (d2.tree_key, d2.current_animal_kcalories),
+            (h1.tree_key, h1.current_animal_kcalories),
+            (h2.tree_key, h2.current_animal_kcalories),
+            (h3.tree_key, h3.current_animal_kcalories)
         ])
 
     @staticmethod
