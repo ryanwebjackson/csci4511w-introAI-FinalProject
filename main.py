@@ -4,7 +4,7 @@ sys.path.append('aima-python')
 from logic import *
 
 from games import alpha_beta_search
-from final_minimax_game import FinalGame
+from lazy_animal_minimax_game1 import LazyAnimalMinimaxGame1
 
 
 class MainHelper:
@@ -17,7 +17,7 @@ class MainHelper:
 
 def main():
 
-    game = FinalGame()
+    game = LazyAnimalMinimaxGame1()
     ab_search_result = alpha_beta_search('A', game)
     print('ab_search_result: ', ab_search_result)
 
