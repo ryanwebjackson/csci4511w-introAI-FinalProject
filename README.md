@@ -16,4 +16,3 @@ TODO:
 - Reinforcement learning
 - Monte-Carlo Tree Search
 - Random activity from both agents - serves as a control group
-\end{itemize}
