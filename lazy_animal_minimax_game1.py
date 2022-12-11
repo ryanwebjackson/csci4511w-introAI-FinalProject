@@ -18,6 +18,9 @@ class LazyAnimalMinimaxGame1(Game):
     One of the planned enhancements: Randomize the initial state.
     It is not realistic that the animal is in the same place,
     and at the same hunger level (current KCalories), at the same time, every day.
+    
+    Note that Alpha-Beta pruning and non-pruning algorithms will be run in the main.py - both are minimax problems (games), so can share the same Game object definition.
+    However, leaving this class named with an ordinal to show that there may be other state transition trees possible for this problem.
     """
 
     # TODO: Replace the below definitions with your own,
