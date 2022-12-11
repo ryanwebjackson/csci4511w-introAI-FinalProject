@@ -32,16 +32,26 @@ class LazyAnimalState:
         self.current_animal_kcalories = 0
 
     def __str__(self):
-        return "animal_location: " + str(self.animal_location) \
-            + "\nhuman_location: " + str(self.human_location) \
-            + "\nfood: " + str(self._food) \
-            + "\ntoys: " + str(self._toys)
+        ret = "tree_key: " + str(self.tree_key) \
+            + "\nis_max: " + str(self.is_max)
+
+        if not isinstance(self.animal_location, DefaultLocation):
+            ret += "\nanimal_location: " + str(self.animal_location)
+
+        if not isinstance(self.human_location, DefaultLocation):
+            ret += "\nhuman_location: " + str(self.human_location)
+
+        if len(self._food) > 0:
+            ret += "\nfood: " + str(self._food)
+
+        if len(self._toys) > 0:
+            ret += "\ntoys: " + str(self._toys)
+
+        return ret
 
     def __eq__(self, other):
-        return self.animal_location == other.animal_location \
-            and self.human_location == other.human_location \
-            and self._food == other.food \
-            and self._toys == other.toys
+        """Uses tree_key as a unique identifier for the state."""
+        return self.tree_key == other.tree_key
 
     def __hash__(self):
         return hash((self.animal_location, self.human_location, self._food, self._toys))
