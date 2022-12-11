@@ -19,3 +19,7 @@ class LazyAnimalStateHelper:
             H1=1,
             H2=2,
             H3=4)
+
+    @staticmethod
+    def get_state_children_a() -> dict:
+        return dict(a1='B', a2='C', a3='D')

@@ -32,7 +32,7 @@ class LazyAnimalMinimaxGame1(games.Game):
 
     # Assume that the animal agent starts (the day/experiment) in the bedroom, and is hungry.
     initial = 'A'
-    successors = dict(A=dict(a1='B', a2='C', a3='D'),
+    successors = dict(A=LazyAnimalStateHelper.get_state_children_a(),
                       B=dict(b1='E', b2='B2'),
                       C=dict(c1='F', c2='G'),
                       D=dict(d1='H', d2='D2'),
@@ -46,7 +46,7 @@ class LazyAnimalMinimaxGame1(games.Game):
     def actions(self, state: LazyAnimalState) -> List[str]:
         return list(self.successors.get(state.tree_key, {}).keys())
 
-    def result(self, state: LazyAnimalState, move):
+    def result(self, state: LazyAnimalState, move) -> LazyAnimalState:
         return self.successors[state.tree_key][move]
 
     def utility(self, state: LazyAnimalState, player):
