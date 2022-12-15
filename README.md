@@ -2,7 +2,9 @@
 
 **IMMEDIATE TODO: Determine by terminal_test result is always false.** 
 1. Ensure Goal state is not pruned.
-2. Change terminal_test back to old logic - to get it working and not have conflicting goals.  
+  - Not sure how to guarantee this. Made a comment.
+  - Tried changing some code to get terminal_test to be true.
+3. Change terminal_test back to old logic - to get it working and not have conflicting goals.  
 Possible to have multiple goals, but do not waste time on the project.
 
 ## Search for optimal fitness plan for pet animal
