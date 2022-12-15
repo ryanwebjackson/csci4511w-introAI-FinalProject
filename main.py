@@ -24,8 +24,12 @@ def main():
     initial_state.tree_key = 'A'
     initial_state.is_max = True
 
-    ab_search_result = alpha_beta_search(initial_state, game)
-    print('ab_search_result: ', ab_search_result)
+    # ab_search_result = alpha_beta_search(initial_state, game)
+    # print('ab_search_result: ', ab_search_result)
+
+    minimax_search_result = alpha_beta_search(initial_state, game, avoid_pruning=True)
+    print('minimax_search_result: ', minimax_search_result)
+
     # Best Action (key) is returned from 'alpha_beta_search', but not the terminal state that it leads to.
     # Also note that it's possible that a goal state is not reached - seeing this happen.
     # Ideal: Return the whole path, from initial state to terminal state (and if goal was reached).

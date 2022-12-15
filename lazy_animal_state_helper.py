@@ -1,23 +1,26 @@
+from lazy_animal_constants import Constants
 from lazy_animal_state import LazyAnimalState
 
 
 class LazyAnimalStateHelper:
+
     @staticmethod
     def get_terminal_states_for_tree1() -> dict:
         """
         Returns a dictionary of terminal states for the state transition tree 1.
         The key is the state's tree_key, the value is the utility of the state.
+
+        'terminal' means leaf nodes in this context.
         """
 
         b2 = LazyAnimalState("B2", True)
         # Note: Had to draw out the state graph to see that B2 is a terminal state
         # (and would be a MAX node functionally if it weren't).
-        b2.current_animal_kcalories = 100  # Simulates animal getting too many calories, and refusing to move.
+        b2.current_animal_kcalories = Constants.target_animal_kcalories  # Simulates animal getting too many calories, and refusing to move.
         e1 = LazyAnimalState("E1", False)
         e1.current_animal_kcalories = 20  # Simulates end-of-day animal not getting enough calories.
         e2 = LazyAnimalState("E2", False)
-        e2.current_animal_kcalories = e2.target_animal_kcalories  # Simulates perfect match of calories - goal achieved.
-        # TODO: Move target_animal_kcalories out (to the LazyAnimalStateHelper class).
+        e2.current_animal_kcalories = Constants.target_animal_kcalories  # Simulates perfect match of calories - goal achieved.
         f1 = LazyAnimalState("F1", False)
         f1.current_animal_kcalories = 25
         f2 = LazyAnimalState("F2", False)
@@ -34,7 +37,7 @@ class LazyAnimalStateHelper:
         h2 = LazyAnimalState("H2", False)
         h2.current_animal_kcalories = 55
         h3 = LazyAnimalState("H3", False)
-        h3.current_animal_kcalories = 60
+        h3.current_animal_kcalories = Constants.target_animal_kcalories
         return dict([
             (b2.tree_key, b2.current_animal_kcalories),
             (e1.tree_key, e1.current_animal_kcalories),

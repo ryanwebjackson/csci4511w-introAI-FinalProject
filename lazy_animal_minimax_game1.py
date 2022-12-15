@@ -64,6 +64,7 @@ class LazyAnimalMinimaxGame1(games.Game):
             return -self.utils[state.tree_key]
 
     def terminal_test(self, state: LazyAnimalState):
+        # Original logic: return state not in ('A', 'B', 'C', 'D')
         ret = state.current_animal_kcalories == state.target_animal_kcalories
         if ret:
             # [jack1805] Not seeing this as true. 11 Dec 2022

@@ -1,5 +1,7 @@
 from typing import *
 
+from lazy_animal_constants import Constants
+
 
 class Location:
     pass
@@ -25,10 +27,7 @@ class LazyAnimalState:
         self.animal_location: Location = DefaultLocation()
         self.is_max = is_max
         self.tree_key = tree_key
-        # Not sure where to set this (target_animal_kcalories), so that it makes sense.
-        # We don't want to start at the goal state, so we need to set it so that current and target are not initially equal.
-        # Could something like float('inf'), and re-set it when the Game gets started.
-        self.target_animal_kcalories = 50
+        self.target_animal_kcalories = Constants.target_animal_kcalories
         self.current_animal_kcalories = 0
 
     def __str__(self):
