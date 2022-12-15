@@ -25,4 +25,5 @@ TODO:
 Note on verbiage (problem framing): https://www.sciencedirect.com/science/article/pii/S016518890000066X
 - Reinforcement learning
 - Monte-Carlo Tree Search
+*Found some information on how to optimize (prune?). Reference this in the write-up, even if not using in the experiments.*
 - Random activity from both agents - serves as a control group
