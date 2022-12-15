@@ -1,13 +1,13 @@
 # csci4511w-introAI-FinalProject
 
-**IMMEDIATE TODOs:**  
+IMMEDIATE TODOs:  
 I. Determine by terminal_test result is always false.  
 1. ~~Ensure Goal state is not pruned.~~
   - Not sure how to guarantee this. Made a comment.
   - Tried changing some code to get terminal_test to be true.
 3. ~~Change terminal_test back to old logic - to get it working and not have conflicting goals.~~
 
-II. Write GENETIC algorithm solution
+II. **Write GENETIC algorithm solution**
 
 ## Search for optimal fitness plan for pet animal
 
