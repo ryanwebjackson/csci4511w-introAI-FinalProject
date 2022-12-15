@@ -16,9 +16,10 @@ class LazyAnimalStateHelper:
         b2 = LazyAnimalState("B2", True)
         # Note: Had to draw out the state graph to see that B2 is a terminal state
         # (and would be a MAX node functionally if it weren't).
-        b2.current_animal_kcalories = Constants.target_animal_kcalories  # Simulates animal getting too many calories, and refusing to move.
+        b2.current_animal_kcalories = 100   # Simulates animal getting too many calories, and refusing to move.
         e1 = LazyAnimalState("E1", False)
         e1.current_animal_kcalories = 20  # Simulates end-of-day animal not getting enough calories.
+        # Either the animal didn't get enough food, or it got too much exercise.
         e2 = LazyAnimalState("E2", False)
         e2.current_animal_kcalories = Constants.target_animal_kcalories  # Simulates perfect match of calories - goal achieved.
         f1 = LazyAnimalState("F1", False)
@@ -37,7 +38,7 @@ class LazyAnimalStateHelper:
         h2 = LazyAnimalState("H2", False)
         h2.current_animal_kcalories = 55
         h3 = LazyAnimalState("H3", False)
-        h3.current_animal_kcalories = Constants.target_animal_kcalories
+        h3.current_animal_kcalories = 60
         return dict([
             (b2.tree_key, b2.current_animal_kcalories),
             (e1.tree_key, e1.current_animal_kcalories),

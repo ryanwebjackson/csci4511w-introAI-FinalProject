@@ -64,13 +64,13 @@ class LazyAnimalMinimaxGame1(games.Game):
             return -self.utils[state.tree_key]
 
     def terminal_test(self, state: LazyAnimalState):
-        # Original logic: return state not in ('A', 'B', 'C', 'D')
-        ret = state.current_animal_kcalories == state.target_animal_kcalories
+        ret = state.tree_key in LazyAnimalStateHelper.get_terminal_states_for_tree1().keys()
+        # Not sure how to get the below logic working with MiniMax.
+        # I realize a business goal may conflict with the MinMax node,
+        # but thought that multiple goals are possible. Setting this aside for another day.
+        # ret = state.current_animal_kcalories == state.target_animal_kcalories
         if ret:
-            # [jack1805] Not seeing this as true. 11 Dec 2022
-            # Checked in max_value and min_value of alpha_beta_search in games.py
             print("terminal_test: true")
-            # PyUtilityFunctions.print_traceback()
         else:
             print("terminal_test: false")
 
