@@ -5,8 +5,12 @@ from tests.test_search import *  # type: ignore
 
 
 class RunnerGeneticGame1:
+
+    # def genetic_search(problem, ngen=1000, pmut=0.1, n=20):
+    # use this function from search.py, and pass in the problem
+
     @staticmethod
-    def run_genetic(self):
+    def run_genetic():
         # AIMA code example for bootstrapping:
 
         def aimatest_genetic_algorithm():

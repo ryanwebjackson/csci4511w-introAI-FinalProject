@@ -1,17 +1,13 @@
 from games import alpha_beta_search
 from lazy_animal_minimax_game1 import LazyAnimalMinimaxGame1
-from lazy_animal_state import LazyAnimalState
+from lazy_animal_state_helper import LazyAnimalStateHelper
 
 
 class RunnerMinimaxGame1:
     @staticmethod
-    def run_minimax(self):
+    def run_minimax():
         game = LazyAnimalMinimaxGame1()
-
-        initial_state = LazyAnimalState()
-        initial_state.tree_key = 'A'
-        initial_state.is_max = True
-
+        initial_state = LazyAnimalStateHelper.get_initial_state()
         ab_search_result = alpha_beta_search(initial_state, game)
         print('ab_search_result: ', ab_search_result)
 

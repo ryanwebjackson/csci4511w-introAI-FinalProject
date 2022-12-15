@@ -31,21 +31,15 @@ class LazyAnimalMinimaxGame1(games.Game):
     # TODO: Clarify why the following state transition tree is valid,
     # or create a new one that is valid.
 
+    # WARNING: Hierarchy may be specific to MiniMax - some assumptions present within it.
+
     # Assume that the animal agent starts (the day/experiment) in the bedroom, and is hungry.
     initial = 'A'
     # First-level (root): A (MAX)
     # Second-level: B, C, D (MIN)
     # Third-level: E, B2, F, G, H, D2
     # Fourth-level: E1, E2, F1, F2, G1, G2, H1, H2, H3
-    successors = dict(A=LazyAnimalStateHelper.get_state_children_a(),
-                      B=LazyAnimalStateHelper.get_state_children_b(),
-                      C=dict(c1=LazyAnimalState('F', is_max=True), c2=LazyAnimalState('G', is_max=True)),
-                      D=dict(d1=LazyAnimalState('H', True), d2=LazyAnimalState('D2', True)),
-                      E=dict(e1=LazyAnimalState('E1'), e2=LazyAnimalState('E2')),  # E's children are MIN nodes.
-                      F=dict(f1=LazyAnimalState('F1'), f2=LazyAnimalState('F2')),
-                      G=dict(g1=LazyAnimalState('G1'), g2=LazyAnimalState('G2')),
-                      H=dict(h1=LazyAnimalState('H1'), h2=LazyAnimalState('H2'), h3=LazyAnimalState('H3'))
-                      )
+    successors = LazyAnimalStateHelper.get_successors_for_tree1()
     # Note: Can clean up the code above later - may or may not need the helper functions.
 
     # Second-level successors:

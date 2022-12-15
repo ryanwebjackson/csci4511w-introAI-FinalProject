@@ -5,6 +5,10 @@ from lazy_animal_state import LazyAnimalState
 class LazyAnimalStateHelper:
 
     @staticmethod
+    def get_initial_state() -> LazyAnimalState:
+        return LazyAnimalState('A', is_max=True)
+
+    @staticmethod
     def get_terminal_states_for_tree1() -> dict:
         """
         Returns a dictionary of terminal states for the state transition tree 1.
@@ -68,3 +72,16 @@ class LazyAnimalStateHelper:
             b2=LazyAnimalState('B2', is_max=True)
         )
 
+    @staticmethod
+    def get_successors_for_tree1() -> dict:
+        """ get_successors_for_tree1 """
+        return \
+            dict(A=LazyAnimalStateHelper.get_state_children_a(),
+                 B=LazyAnimalStateHelper.get_state_children_b(),
+                 C=dict(c1=LazyAnimalState('F', is_max=True), c2=LazyAnimalState('G', is_max=True)),
+                 D=dict(d1=LazyAnimalState('H', True), d2=LazyAnimalState('D2', True)),
+                 E=dict(e1=LazyAnimalState('E1'), e2=LazyAnimalState('E2')),  # E's children are MIN nodes.
+                 F=dict(f1=LazyAnimalState('F1'), f2=LazyAnimalState('F2')),
+                 G=dict(g1=LazyAnimalState('G1'), g2=LazyAnimalState('G2')),
+                 H=dict(h1=LazyAnimalState('H1'), h2=LazyAnimalState('H2'), h3=LazyAnimalState('H3'))
+                 )
