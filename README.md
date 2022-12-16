@@ -7,7 +7,7 @@ I. Determine by terminal_test result is always false.
   - Tried changing some code to get terminal_test to be true.
 3. ~~Change terminal_test back to old logic - to get it working and not have conflicting goals.~~
 
-II. **Write GENETIC algorithm solution**
+II. **Write MCTS algorithm solution**
 
 ## Search for optimal fitness plan for pet animal
 
