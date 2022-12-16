@@ -1,14 +1,18 @@
 from typing import *
+from typing import Tuple
 
 from lazy_animal_constants import Constants
 
 
 class Location:
-    pass
+    def __init__(self, x: int, y: int):
+        self.x = x
+        self.y = y
 
 
 class DefaultLocation(Location):
-    pass
+    def __init__(self):
+        super().__init__(0, 0)
 
 
 class LazyAnimalState:
@@ -16,6 +20,7 @@ class LazyAnimalState:
     Notes: Goal test (terminal state test) is handled by the Game object (ex. LazyAnimalMinimaxGame1).
     Legal actions are also handled by the same class (object).
     """
+
     # Note: Leaving default values for required parameters for now -
     # games.py code might be initializing the state automatically.
     # TODO: Remove default values for required parameters when possible.
@@ -32,7 +37,7 @@ class LazyAnimalState:
 
     def __str__(self):
         ret = "tree_key: " + str(self.tree_key) \
-            + "\nis_max: " + str(self.is_max)
+              + "\nis_max: " + str(self.is_max)
 
         if not isinstance(self.animal_location, DefaultLocation):
             ret += "\nanimal_location: " + str(self.animal_location)
@@ -94,10 +99,28 @@ class LazyAnimalState:
     toys = property(get_toys, set_toys, del_toys)
 
     def plays(self, location: Location):
-        """Sets IsPlayedWith to true for all toys at the given location."""
-        pass  # TODO: Add code to flip IsPlayedWith to true (for a given toy location).
+        for toy in self._toys:
+            if toy[0] == location:
+                toy[2] = True  # type: ignore
 
     def eats(self, location: Location):
-        pass  # TODO: Add code to flip IsEaten to true (for a given food location).
+        for food in self._food:
+            if food[0] == location:
+                food[2] = True  # type: ignore
+
+    def update(self):
+        if self.animal_location == self.human_location:
+            print("Constraint: Animal refuses to act while human is present.")
+            return
+
+        for food in self._food:
+            if self.animal_location == food[0] and food[2] is False:
+                self.current_animal_kcalories += food[1]
+                food[2] = True
+
+        for toy in self._toys:
+            if self.animal_location == toy[0] and toy[2] is False:
+                self.current_animal_kcalories -= toy[1]
+                toy[2] = True
 
     # TODO: Consider more fine-grained methods for the above two collections (food and toys).

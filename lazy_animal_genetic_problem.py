@@ -1,8 +1,8 @@
-# Planned on doing 2 different forms of GA for this project, but get one working first (by any reasonable means).
-from typing import List, Optional
+from random import *
+from typing import List, Optional, Tuple
 
 from lazy_animal_constants import Constants
-from lazy_animal_state import LazyAnimalState
+from lazy_animal_state import LazyAnimalState, Location
 from search import Problem  # type: ignore
 
 
@@ -67,3 +67,93 @@ class LazyAnimalGeneticProblem(Problem):
                 raise Exception("Unexpected value type in recurse_to_find_subject_state_val. type: ", type(value))
 
         return subject_state_val
+
+    @staticmethod
+    def recombine_fn(parent1: LazyAnimalState, parent2: LazyAnimalState) -> LazyAnimalState:
+        t_len1 = len(parent1.toys)
+        f_len1 = len(parent1.food)
+        if t_len1 == 0:
+            t_len1 = 1
+            keep_toys = False
+        else:
+            keep_toys = True
+
+        if f_len1 == 0:
+            f_len1 = 1
+            keep_food = False
+        else:
+            keep_food = True
+
+        t_range1 = randrange(0, t_len1)
+        f_range1 = randrange(0, f_len1)
+
+        t_len2 = len(parent1.toys)
+        f_len2 = len(parent1.food)
+
+        if t_len2 == 0:
+            t_len2 = 1
+            take_toys = False
+        else:
+            take_toys = True
+
+        if f_len2 == 0:
+            f_len2 = 1
+            take_food = False
+        else:
+            take_food = True
+
+        t_range2 = randrange(0, t_len2)
+        f_range2 = randrange(0, f_len2)
+
+        # Keep these:
+        if keep_toys:
+            parent1.toys = parent1.toys[:t_range1]
+
+        if keep_food:
+            parent1.food = parent1.food[:f_range1]
+
+        # Take these:
+        if take_toys:
+            parent1.toys.append(parent2.toys[t_range2:])
+
+        if take_food:
+            parent1.food.append(parent2.food[f_range2:])
+
+        parent1.current_animal_kcalories = \
+            round((parent1.current_animal_kcalories + parent2.current_animal_kcalories) / 2)
+
+        # Note that we do not want to add a new state to the tree here,
+        # but to combine attributes from two different states.
+
+        return parent1
+
+    @staticmethod
+    def mutate_fn(x: LazyAnimalState, gene_pool: list, pmut: float) -> LazyAnimalState:
+        if uniform(0, 1) >= pmut:
+            return x
+
+        n = len(x.tree_key)
+        g = len(gene_pool)
+        c = randrange(0, n)
+        r = randrange(0, g)
+
+        new_gene = gene_pool[r]
+        # The gene, if unique, can be used to identify a new state.
+        intermediate = x.tree_key[:c] + str(new_gene) + x.tree_key[c + 1:]
+
+        # Note: Location does not have constraints --
+        # If this changes, then these random values passed to it will need to be constrained accordingly.
+
+        # Location, Calories burned by playing with toy, Boolean flag for IsPlayedWith.
+        new_toy: Tuple[Location, int, bool] = (Location(c, r), len(intermediate)*10, False)
+        new_food: Tuple[Location, int, bool] = (Location(c+1, r-1), len(intermediate)*10, False)
+        # TODO: Ensure that toys and food are accounted for, by way of agent actions.
+        # Same thing applies for human_location, and animal_location.
+        # i.e. Locations on the way to the current state should be factored into the current state's value.
+        x.toys.append(new_toy)
+        x.food.append(new_food)
+        x.current_animal_kcalories = len(intermediate)  # Start small, so we don't reach the goal right away.
+        x.human_location = Location(c+2, r-2)
+        x.animal_location = Location(c+3, r-3)
+
+        return x
