@@ -9,6 +9,9 @@ I. Determine by terminal_test result is always false.
 
 II. **Write MCTS algorithm solution**
 
+III. Performance Analysis (CPU, Memory, time running)
+*benchmarking tools may or may not be ideal for this task*
+
 ## Search for optimal fitness plan for pet animal
 
 TODO:
