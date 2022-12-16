@@ -1,6 +1,7 @@
 import sys
 sys.path.append('aima-python')
 
+from lazy_animal_environment import LazyAnimalEnvironment
 from lazy_animal_constants import Constants
 from lazy_animal_monte_carlo_game import LazyAnimalMonteCarloGame
 from lazy_animal_game_state_adapter_monte import LazyAnimalGameStateAdapterMonteCarlo
@@ -17,18 +18,24 @@ class RunnerMonteCarloGame1:
     @staticmethod
     def run_montecarlo():
 
-        # Example game-state from test code (not expecting this to work - acting as stub):
-        game_state = gen_state(to_move='X', x_positions=[(1, 1), (3, 3)], o_positions=[(1, 2), (3, 2)])
+        game_state = LazyAnimalGameStateAdapterMonteCarlo.get_initial_monte_game_state(
+            to_move='X',
+            x_positions=[(1, 1), (3, 3)],
+            o_positions=[(1, 2), (3, 2)]
+        )
 
-        lazy_animal_state = LazyAnimalStateHelper.get_initial_state()
-        adapter = LazyAnimalGameStateAdapterMonteCarlo(game_state, lazy_animal_state)
+        lazy_animal_state_initial = LazyAnimalStateHelper.get_initial_state()
+        adapter = LazyAnimalGameStateAdapterMonteCarlo(game_state, lazy_animal_state_initial)
 
         # Note: expected_result not used for now.
         expected_result = LazyAnimalState(tree_key="D", is_max=False)
         expected_result.current_animal_kcalories = Constants.target_animal_kcalories
 
-        state = adapter.adapt()
-        game = LazyAnimalMonteCarloGame()  # TODO: Provide initial state, and environment.
+        state = adapter.adapt_gamestate_to_domainstate()
+
+        environment = LazyAnimalEnvironment()
+        
+        game = LazyAnimalMonteCarloGame(lazy_animal_state_initial, environment)
         result = monte_carlo_tree_search(state, game)
 
         # Saving the below for now: random_player will be useful for testing

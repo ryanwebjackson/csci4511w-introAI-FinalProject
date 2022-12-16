@@ -28,7 +28,7 @@ class LazyAnimalGameStateAdapterMonteCarlo:
 
     # endregion
 
-    def adapt(self) -> GameState:
+    def adapt_gamestate_to_domainstate(self) -> GameState:
         print("Should update data based on GameState and LazyAnimalState - stubbed out for now.")
         return self.game_state
 
@@ -46,3 +46,20 @@ class LazyAnimalGameStateAdapterMonteCarlo:
     def get_state(self):
         raise NotImplementedError("get_state() not implemented")
 
+    @staticmethod
+    def get_initial_monte_game_state(to_move='X', x_positions=[], o_positions=[], h=3, v=3):
+        # TODO: Replace the below with stuff that makes sense for the Lazy Animal game.
+
+        """Given whose turn it is to move, the positions of X's on the board, the
+        positions of O's on the board, and, (optionally) number of rows, columns
+        and how many consecutive X's or O's required to win, return the corresponding
+        game state"""
+
+        moves = set([(x, y) for x in range(1, h + 1) for y in range(1, v + 1)]) - set(x_positions) - set(o_positions)
+        moves = list(moves)
+        board = {}
+        for pos in x_positions:
+            board[pos] = 'X'
+        for pos in o_positions:
+            board[pos] = 'O'
+        return GameState(to_move=to_move, utility=0, board=board, moves=moves)

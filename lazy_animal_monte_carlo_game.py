@@ -26,6 +26,10 @@ class LazyAnimalMonteCarloGame(Game):
 
     def result(self, state, move):
         """Return the state that results from making a move from a state."""
+        print("Calculating result...")
+        print("DEBUG state: " + str(state))
+        print("DEBUG move: " + str(move))
+
         raise NotImplementedError
 
     def utility(self, state, player):
