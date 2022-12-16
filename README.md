@@ -22,7 +22,9 @@ TODO:
 *Through iterative experimentation, several specific approaches will be tried, and the results will be compared. Below are the current ideas I have for these:*
 - Mini-Max (with and without A-B pruning, to see the performance (comp. and memory) difference)
 - Genetic algorithms (2 forms)  
-Note on verbiage (problem framing): https://www.sciencedirect.com/science/article/pii/S016518890000066X
+Note on verbiage (problem framing): https://www.sciencedirect.com/science/article/pii/S016518890000066X  
+Question: How is crossover done in AIMA code?
+eg. child = crossover(selection[0], selection[1])  
 - Reinforcement learning
 - Monte-Carlo Tree Search
 *Found some information on how to optimize (prune?). Reference this in the write-up, even if not using in the experiments.*
