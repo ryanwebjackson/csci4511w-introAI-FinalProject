@@ -16,7 +16,7 @@ class RunnerGeneticGame1:
         successors = LazyAnimalStateHelper.get_successors_for_tree1()
         utils = LazyAnimalStateHelper.get_terminal_states_for_tree1()
         problem = LazyAnimalGeneticProblem(initial, successors, utils)
-        genetic_search(
+        output = genetic_search(
             problem,
             ngen=1000,
             pmut=0.1,
@@ -24,3 +24,5 @@ class RunnerGeneticGame1:
             recombine_fn=LazyAnimalGeneticProblem.recombine_fn,
             mutate_fn=LazyAnimalGeneticProblem.mutate_fn
         )
+
+        print("output: ", output)

@@ -51,6 +51,9 @@ class LazyAnimalState:
         if len(self._toys) > 0:
             ret += "\ntoys: " + str(self._toys)
 
+        ret += "\ncurrent_animal_kcalories: " + str(self.current_animal_kcalories)
+        ret += "\ntarget_animal_kcalories: " + str(self.target_animal_kcalories)
+
         return ret
 
     def __eq__(self, other):
