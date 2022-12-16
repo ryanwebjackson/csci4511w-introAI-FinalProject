@@ -3,6 +3,7 @@ sys.path.append('aima-python')
 
 from runner_minimax_game1 import RunnerMinimaxGame1
 from runner_genetic_game1 import RunnerGeneticGame1
+from runner_montecarlo_game1 import RunnerMonteCarloGame1
 
 
 def main(args):
@@ -19,6 +20,11 @@ def main(args):
     elif args[0] == "genetic":
         print("running genetic algorithm...")
         RunnerGeneticGame1.run_genetic()
+    elif args[0] == "montecarlo":
+        print("running monte carlo tree search...")
+        RunnerMonteCarloGame1.run_montecarlo()
+    else:
+        print('Invalid argument passed - running nothing.')
 
 
 if __name__ == '__main__':

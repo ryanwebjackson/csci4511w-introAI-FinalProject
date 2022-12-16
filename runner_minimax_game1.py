@@ -1,4 +1,7 @@
-from games import alpha_beta_search
+import sys
+sys.path.append('aima-python')
+
+from games import alpha_beta_search  # type: ignore
 from lazy_animal_minimax_game1 import LazyAnimalMinimaxGame1
 from lazy_animal_state_helper import LazyAnimalStateHelper
 
