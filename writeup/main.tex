@@ -21,6 +21,30 @@
     \vskip0.5em}%
 }
 
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=Python,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
 \title{Comparison of solution search algorithms, for an optimal fitness plan for a pet (the ``lazy animal'' problem)}
 \subtitle{Introduction to A.I. (CSCI-4511W) - Final Project}
 \author{Ryan Jackson \\ jack1805@umn.edu \\ University of Minnesota}
@@ -29,51 +53,57 @@
 \begin{document}
 \maketitle
 
-\begin{abstract}
-    Dan Challou 16 hours ago
-If you stayed on track, some parts are reusable (references, discussion of problem , references relationship to problem), and there should be a  portion that is updated and new - discussion on experimental design, results, analysis, summary 
-\end{abstract}
-
 \section{Problem Description}
 
-For my CSCI-4511W final project, I will be utilizing several artificial intelligence (A.I.) techniques to address the problem of optimal pet (animal) health, in terms of physical activity. This is a problem because some pets are not very physically active, and both for their well-being, and our (human beings') own reasons, we want them to live as long as reasonably possible. Since there are many factors that go into this, my initial idea was to use a pet cat (agent/actor, real or simulated) and an adversarial A.I. (Mini-Max, etc.) to generate a strategy to keep the cat fit using small rewards for physical activity (a small treat for traveling a number of square feet). In exploring this idea, I realized that it may work, but several other approaches may also work. Therefore my current idea for the project is to run several simulations, using different A.I. techniques, and to compare the results of those simulations (using performance measures, and more abstract qualitative measurements).
+For my CSCI-4511W final project, I utilized several artificial intelligence (A.I.) techniques to address the problem of optimal pet (animal) health, in terms of physical activity. This is a problem because some pets are not very physically active, and both for their well-being, and our (human beings') own reasons, we want them to live as long as reasonably possible (I am now calling this the ``lazy animal'' problem). Since there are many factors that go into this, my initial idea was to use a pet cat (agent/actor, real or simulated) and an adversarial A.I. (Mini-Max, etc.) to generate a strategy to keep the cat fit using small rewards for physical activity (a small treat for traveling a number of square feet). In exploring this idea, I realized that it may work, but several other approaches may also work. Therefore the core of the project is to run several simulations, using different A.I. techniques, and to compare the results of those simulations.
 
-I will aim to have the simulations working cross-platform (Mac, Windows, etc.), and the results available as a report write-up, complete with graphs and charts when applicable. I welcome feedback, and hope to expand on this idea in the future.
-
-I will be flexible in my formulation to the problem. For example, instead of a cat, the pet may be a dog or any animal that fits the expected profile. However, if it veers too much, I will have to exclude that pet/agent, and make it clear why it is not viable for the problem formulation. I have compiled several domain data sources to assist with the building and solving the problem, such as the following:
+Here are some resources I referenced when doing initial research for this problem:
 \begin{itemize}
     \item ``Diet and exercise patterns in pet dogs.'' (Article) \cite{slater1995diet}
     \item ``Varram'' - product doing something similar to the idea for this project: https://varram.com \cite{varram}
     \textit{They do not cite any sort of technical reference, and one would have to infer/reverse engineer how this robot is working}
-    \item A difference example of pet AI - computer vision to detect animal pain: ``Facial expressions of pain in cats: the development and validation of a Feline Grimace Scale''  \cite{evangelista2019}
+    \item A difference example of pet AI - computer vision to detect animal pain: ``Facial expressions of pain in cats: the development and validation of a Feline Grimace Scale'' - used to see how A.I. can be used to determine a pet's reaction to stimulus  \cite{evangelista2019}
 \end{itemize}
 
 \section{Addressing the Problem with A.I. Techniques}
 
-The core goal of this project idea is to create an adversarial AI, to generate a strategy, to keep a pet as healthy as possible. This assumes a pet which does not want to get much exercise, and an owner that does want the pet to get an optimal amount of exercise.
+The core concept of this project is to create an adversarial AI, to generate a strategy, to keep a pet as healthy as possible. This assumes a pet which does not want to get much exercise, and an owner that does want the pet to get an optimal amount of exercise (``the lazy animal problem'').
 
-Through iterative experimentation, several specific approaches will be tried, and the results will be compared. Below are the current ideas I have for these:
+Through iterative experimentation, several specific approaches were tried:
 \begin{itemize}
     \item Mini-Max (with and without A-B pruning)
-    \item Genetic algorithms (2 forms)
-    \item Reinforcement learning
+    \item Genetic algorithms
     \item Monte-Carlo Tree Search
-    \item Random activity from both agents - serves as a control group
+    \item Reinforcement learning - \textit{Ran out of time}
+    \item Random activity from both agents - serves as a control group - \textit{AIMA provides some of this functionality but it didn't make it into the current version of my code}
 \end{itemize}
 
 \subsection{Software}
-  I aim to make good use of the AIMA code we studied in this course, as well as open source software, and custom software I have written to enact the experiments planned for this project. Python will be used as the programming language, and open source libraries will include MushroomRL for reinforcement learning.\cite{mushroom}
+  I made good use of the AIMA code we studied in this course and custom software I have written to enact the experiments planned for this project. 
+  Though not included in the attached code, I plan to continue this project, and use and open source libraries like MushroomRL to do so.\cite{mushroom}
 
-\section{Planned Experiments and Observation Approach}
+\section{Experiments}
 
-To run the experiments and analyze my results, I plan on using custom Python programs, written to simulate and solve the subject problem, and the results will be analyzed by me, and detailed in an accompanying written report. I realize it is possible to use tools like Jupyter Notebooks to create a document with executable code, but I am not very familiar with this tool, and will try it before committing to it for use with this project.
+I wrote custom Python software (script), using the AIMA (\cite{russell2016artificial}) code as a base. Please see the following code snippet on how to run the main script and pass a single word argument to it to configure the algorithm used.
 
-The overall goal of my choice of problem for the project, is to solve a real-world problem, in a creative way, and explore why or why not such a strategy would work. In the case of "why not" I seek to describe in as much detail and experimental result data, why a specific approach would not work theoretically or in the real world.
+\begin{lstlisting}
+    if args[0] == "minimax":
+        print("running minimax (alpha-beta pruning)...")
+        RunnerMinimaxGame1.run_minimax()
+    elif args[0] == "genetic":
+        print("running genetic algorithm...")
+        RunnerGeneticGame1.run_genetic()
+    elif args[0] == "montecarlo":
+        print("running monte carlo tree search...")
+        RunnerMonteCarloGame1.run_montecarlo()
+    else:
+        print('Invalid argument passed - running nothing.')
+\end{lstlisting}
 
 \subsection{Performance Measures}
 \textit{The `P' in PEAS}
 
-\underline{Performance Measures, for measuring the success of a specific algorithm}
+\textit{Performance Measures, for measuring the success of a specific algorithm}
 \begin{itemize}
   \item Is the move count of agent 1 greater than 0 and less than the over-fitness parameter? The higher this number in this range, the greater the performance.
   \item What is the move count of agent 2? Presume that a minimal move count is better.
@@ -81,7 +111,8 @@ The overall goal of my choice of problem for the project, is to solve a real-wor
   \item Assume that agent 1 (cat) can smell the air an unlimited number of times.
 \end{itemize}
 
-\underline{Performance Measures, for comparing different algorithms}
+\textit{Performance Measures, for comparing different algorithms}
+
 \begin{itemize}
   \item Method 1: Value Iteration Algorithm (RL) \cite{mohan2014}
   \textit{Time to converge}
@@ -89,24 +120,29 @@ The overall goal of my choice of problem for the project, is to solve a real-wor
   \item Method 3: Memory requirements
 \end{itemize}
 
-Please note: Performance metrics for running simulation(s) should be noted, but not conflated with those that are collected and analyzed for generating the strategy for the adversarial A.I. agent.
+\textit{I did not get these performance monitoring measures working in Python in time to submit this paper.}
 
 \section{Analysis}
 
-From establishing Python code examples, using the AIMA book's code as a base to build upon, I got different results from each of the algorithms, which leads me to believe that I either: didn't structure the problem appropriately or didn't run the experiments (by way of the custom code) enough (iteration number was too low). I initially thought that a "lazy animal" coupled with a human as a "competitor" would make for a great MiniMax problem/game, but going through the aforementioned programming experience, writing out the problem, and talking it over with peers, I have come to the conclusion that this is not the best approach. Though there may be several viable approaches, I believe the best to be reinforcement learning (RL) for the following several reasons:
+From establishing Python code examples, using the AIMA book's code as a base to build upon, I got different results from each of the algorithms, which leads me to believe that I either: didn't structure the problem appropriately or didn't run the experiments (by way of the custom code) enough (iteration number was too low). I initially thought that a "lazy animal" coupled with a human as a "competitor" would make for a great Mini-Max problem/game, but going through the aforementioned programming experience, writing out the problem, and talking it over with peers, I have come to the conclusion that this is not the best approach. Though there may be several viable approaches, I believe the best to be reinforcement learning (RL) for the following several reasons:
 
 \begin{itemize}
-  \item Benefit 1
-  \item Benefit 2
-  \item Benefit 3
+  \item RL is a good approach when the true model is not known. (when data is not labelled, or when the average path to success is not known)
+  \item RL is good when the goal does not change. In this case, the general goal does not change, but the specific form it takes might.
+  \item RL is good at making a long sequence of complex decisions. In this case, the solution might be more complex than expected, but it certainly not as complex as a game like GO, which RL has been used to find solutions for.
 \end{itemize}
 
-Note that RL can be initialized with "demonstrations" purposeful training examples of a prescribed method on how to perform a task. In this case, a fitness plan solution could be provided by current or former pet owners, as well as crowdsourced.
-  
-\section{Explanation of References}
-As the needs be, I will reference the official textbook(s) for this course, as well as domain information outlined above and on the Web, and official documentation for open source and other programming tools necessary to build the executable portion of the project.
+Note that RL can be initialized with "demonstrations" purposeful training examples of a prescribed method on how to perform a task. In this case, a fitness plan solution could be provided by current or former pet owners, as well as crowd-sourced.
 
-In addition to the preceding types of resources, if possible, I will make use of a pet activity tracker in the real-world, and run tests with my own pet dog - if performed, these types of tests (experiments) would use less computational resources, as simulation would not be necessary. However, it is worth noting that they would/will take longer than simulations to run. The advantage to these types of tests however, is more domain-accurate results (data), which is good for drawing conclusions, and performing future research.
+\subsection{Lessons learned on specific algorithms}
+
+One of the algorithms I explored to solve this problem, is a class of algoritms called Genetic Algorithms (GA). One of the papers I referenced to better understand how this concept can be applied to a problem like this comes from Riechmann, 2001. \cite{RIECHMANN20011019} He says, ``These propositions are (a) every GA is a dynamic game; (b) every GA is an evolutionary game; and (c) in GA learning processes, populations tend to converge towards a Nash equilibrium.''. I believe this to be applicable because an animal can't be eating all the time, playing all the time, sleeping all the time, etc. - there must be a balance. The balance is what is found by seeking the Nash equilibrium, especially over time, and with a little randomness applied to a learning algorithm.
+  
+\section{Future plans}
+
+I would like to make use of an animal activity tracker device, and one of these A.I. (classes of) algorithms, to make this a real-world project. I ran out of time in the semester to utilize it, but have purchased a tracking device for my pet dog, and hope to use the data it generates to develop fitness plans (over time).
+
+In addition, I would like to clean this project up, by doing better data analysis and metric collection/base-lining, and by presenting the conclusions and analyses by using interactive Python notebooks, similar to the approach we used in the final assignment of the semester.
 
 \newpage
 \bibliographystyle{plain}
