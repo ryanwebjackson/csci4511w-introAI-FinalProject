@@ -1,4 +1,7 @@
+from typing import Tuple
+
 from games4e import GameState  # type: ignore
+from lazy_animal_environment import LazyAnimalEnvironment
 from lazy_animal_state import LazyAnimalState
 
 
@@ -47,19 +50,23 @@ class LazyAnimalGameStateAdapterMonteCarlo:
         raise NotImplementedError("get_state() not implemented")
 
     @staticmethod
-    def get_initial_monte_game_state(to_move='X', x_positions=[], o_positions=[], h=3, v=3):
-        # TODO: Replace the below with stuff that makes sense for the Lazy Animal game.
+    def get_initial_monte_game_state(
+        to_move: str,
+        animal_location: Tuple[int, int],
+        human_location: Tuple[int, int],
+        environment: LazyAnimalEnvironment
+    ) -> GameState:
 
-        """Given whose turn it is to move, the positions of X's on the board, the
-        positions of O's on the board, and, (optionally) number of rows, columns
-        and how many consecutive X's or O's required to win, return the corresponding
-        game state"""
+        moves: list = []
+        if to_move == "animal":
+            moves = environment.get_location_moves(animal_location)
+            # moves.append("eat")
+            # moves.append("play")
+        elif to_move == "human":
+            moves = environment.get_location_moves(human_location)
+            # moves.append("feed")
+            # moves.append("pet")
+        else:
+            raise ValueError("Invalid to_move value: " + str(to_move))
 
-        moves = set([(x, y) for x in range(1, h + 1) for y in range(1, v + 1)]) - set(x_positions) - set(o_positions)
-        moves = list(moves)
-        board = {}
-        for pos in x_positions:
-            board[pos] = 'X'
-        for pos in o_positions:
-            board[pos] = 'O'
-        return GameState(to_move=to_move, utility=0, board=board, moves=moves)
+        return GameState(to_move=to_move, utility=0, board=environment, moves=moves)

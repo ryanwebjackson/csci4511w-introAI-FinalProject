@@ -15,3 +15,16 @@ class LazyAnimalEnvironment(agents.XYEnvironment):
 
     def is_done(self):
         return True
+
+    def get_location_moves(self, animal_location):
+        return [
+            (animal_location[0] + 1, animal_location[1]),
+            (animal_location[0] + 1, animal_location[1] - 1),
+            (animal_location[0] + 1, animal_location[1] + 1),
+            (animal_location[0] - 1, animal_location[1]),
+            (animal_location[0] - 1, animal_location[1] - 1),
+            (animal_location[0] - 1, animal_location[1] + 1),
+            (animal_location[0], animal_location[1] - 1),
+            (animal_location[0], animal_location[1] + 1),
+            (animal_location[0], animal_location[1])
+        ]

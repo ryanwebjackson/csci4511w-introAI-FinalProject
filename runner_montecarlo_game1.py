@@ -19,9 +19,9 @@ class RunnerMonteCarloGame1:
     def run_montecarlo():
 
         game_state = LazyAnimalGameStateAdapterMonteCarlo.get_initial_monte_game_state(
-            to_move='X',
-            x_positions=[(1, 1), (3, 3)],
-            o_positions=[(1, 2), (3, 2)]
+            to_move='animal',  # Could use an Enum here instead for some type safety.
+            animal_location=(1, 1),
+            human_location=(1, 2)
         )
 
         lazy_animal_state_initial = LazyAnimalStateHelper.get_initial_state()
