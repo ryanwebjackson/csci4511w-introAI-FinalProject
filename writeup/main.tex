@@ -45,6 +45,18 @@
   tabsize=3
 }
 
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Overleaf Example},
+    pdfpagemode=FullScreen,
+    }
+
+\urlstyle{same}
+
 \title{Comparison of solution search algorithms, for an optimal fitness plan for a pet (the ``lazy animal'' problem)}
 \subtitle{Introduction to A.I. (CSCI-4511W) - Final Project}
 \author{Ryan Jackson \\ jack1805@umn.edu \\ University of Minnesota}
@@ -52,6 +64,9 @@
 
 \begin{document}
 \maketitle
+
+Link to GitHub repository for the code project:
+\href{https://github.com/ryanwebjackson/csci4511w-introAI-FinalProject}{https://github.com/ryanwebjackson/csci4511w-introAI-FinalProject} 
 
 \section{Problem Description}
 
@@ -99,6 +114,8 @@ I wrote custom Python software (script), using the AIMA (\cite{russell2016artifi
     else:
         print('Invalid argument passed - running nothing.')
 \end{lstlisting}
+
+Please see the GitHub URL at the top of this paper for reference to the full code.
 
 \subsection{Performance Measures}
 \textit{The `P' in PEAS}
