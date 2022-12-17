@@ -50,85 +50,69 @@ I will be flexible in my formulation to the problem. For example, instead of a c
     \item A difference example of pet AI - computer vision to detect animal pain: ``Facial expressions of pain in cats: the development and validation of a Feline Grimace Scale''  \cite{evangelista2019}
 \end{itemize}
 
-\section{Some examples to get started}
+\section{Addressing the Problem with A.I. Techniques}
 
-\subsection{How to create Sections and Subsections}
+The core goal of this project idea is to create an adversarial AI, to generate a strategy, to keep a pet as healthy as possible. This assumes a pet which does not want to get much exercise, and an owner that does want the pet to get an optimal amount of exercise.
 
-Simply use the section and subsection commands, as in this example document! With Overleaf, all the formatting and numbering is handled automatically according to the template you've chosen. If you're using Rich Text mode, you can also create new section and subsections via the buttons in the editor toolbar.
-
-\subsection{How to include Figures}
-
-Note that your figure will automatically be placed in the most appropriate place for it, given the surrounding text and taking into account other figures or tables that may be close by. You can find out more about adding images to your documents in this help article on \href{https://www.overleaf.com/learn/how-to/Including_images_on_Overleaf}{including images on Overleaf}.
-
-
-
-\subsection{How to add Tables}
-
-Use the table and tabular environments for basic tables --- see Table~\ref{tab:widgets}, for example. For more information, please see this help article on \href{https://www.overleaf.com/learn/latex/tables}{tables}. 
-
-\begin{table}
-\centering
-\begin{tabular}{l|r}
-Item & Quantity \\\hline
-Widgets & 42 \\
-Gadgets & 13
-\end{tabular}
-\caption{\label{tab:widgets}An example table.}
-\end{table}
-
-\subsection{How to add Comments and Track Changes}
-
-Comments can be added to your project by highlighting some text and clicking ``Add comment'' in the top right of the editor pane. To view existing comments, click on the Review menu in the toolbar above. To reply to a comment, click on the Reply button in the lower right corner of the comment. You can close the Review pane by clicking its name on the toolbar when you're done reviewing for the time being.
-
-Track changes are available on all our \href{https://www.overleaf.com/user/subscription/plans}{premium plans}, and can be toggled on or off using the option at the top of the Review pane. Track changes allow you to keep track of every change made to the document, along with the person making the change. 
-
-\subsection{How to add Lists}
-
-You can make lists with automatic numbering \dots
-
-\begin{enumerate}
-\item Like this,
-\item and like this.
-\end{enumerate}
-\dots or bullet points \dots
+Through iterative experimentation, several specific approaches will be tried, and the results will be compared. Below are the current ideas I have for these:
 \begin{itemize}
-\item Like this,
-\item and like this.
+    \item Mini-Max (with and without A-B pruning)
+    \item Genetic algorithms (2 forms)
+    \item Reinforcement learning
+    \item Monte-Carlo Tree Search
+    \item Random activity from both agents - serves as a control group
 \end{itemize}
 
-\subsection{How to write Mathematics}
+\subsection{Software}
+  I aim to make good use of the AIMA code we studied in this course, as well as open source software, and custom software I have written to enact the experiments planned for this project. Python will be used as the programming language, and open source libraries will include MushroomRL for reinforcement learning.\cite{mushroom}
 
-\LaTeX{} is great at typesetting mathematics. Let $X_1, X_2, \ldots, X_n$ be a sequence of independent and identically distributed random variables with $\text{E}[X_i] = \mu$ and $\text{Var}[X_i] = \sigma^2 < \infty$, and let
-\[S_n = \frac{X_1 + X_2 + \cdots + X_n}{n}
-      = \frac{1}{n}\sum_{i}^{n} X_i\]
-denote their mean. Then as $n$ approaches infinity, the random variables $\sqrt{n}(S_n - \mu)$ converge in distribution to a normal $\mathcal{N}(0, \sigma^2)$.
+\section{Planned Experiments and Observation Approach}
 
+To run the experiments and analyze my results, I plan on using custom Python programs, written to simulate and solve the subject problem, and the results will be analyzed by me, and detailed in an accompanying written report. I realize it is possible to use tools like Jupyter Notebooks to create a document with executable code, but I am not very familiar with this tool, and will try it before committing to it for use with this project.
 
-\subsection{How to change the margins and paper size}
+The overall goal of my choice of problem for the project, is to solve a real-world problem, in a creative way, and explore why or why not such a strategy would work. In the case of "why not" I seek to describe in as much detail and experimental result data, why a specific approach would not work theoretically or in the real world.
 
-Usually the template you're using will have the page margins and paper size set correctly for that use-case. For example, if you're using a journal article template provided by the journal publisher, that template will be formatted according to their requirements. In these cases, it's best not to alter the margins directly.
+\subsection{Performance Measures}
+\textit{The `P' in PEAS}
 
-If however you're using a more general template, such as this one, and would like to alter the margins, a common way to do so is via the geometry package. You can find the geometry package loaded in the preamble at the top of this example file, and if you'd like to learn more about how to adjust the settings, please visit this help article on \href{https://www.overleaf.com/learn/latex/page_size_and_margins}{page size and margins}.
+\underline{Performance Measures, for measuring the success of a specific algorithm}
+\begin{itemize}
+  \item Is the move count of agent 1 greater than 0 and less than the over-fitness parameter? The higher this number in this range, the greater the performance.
+  \item What is the move count of agent 2? Presume that a minimal move count is better.
+  \item If breaking, or adding, food is an option in the game, assume that a lower count for this action is better.
+  \item Assume that agent 1 (cat) can smell the air an unlimited number of times.
+\end{itemize}
 
-\subsection{How to change the document language and spell check settings}
+\underline{Performance Measures, for comparing different algorithms}
+\begin{itemize}
+  \item Method 1: Value Iteration Algorithm (RL) \cite{mohan2014}
+  \textit{Time to converge}
+  \item Method 2: Processor utilization
+  \item Method 3: Memory requirements
+\end{itemize}
 
-Overleaf supports many different languages, including multiple different languages within one document. 
+Please note: Performance metrics for running simulation(s) should be noted, but not conflated with those that are collected and analyzed for generating the strategy for the adversarial A.I. agent.
 
-To configure the document language, simply edit the option provided to the babel package in the preamble at the top of this example project. To learn more about the different options, please visit this help article on \href{https://www.overleaf.com/learn/latex/International_language_support}{international language support}.
+\section{Analysis}
 
-To change the spell check language, simply open the Overleaf menu at the top left of the editor window, scroll down to the spell check setting, and adjust accordingly.
+From establishing Python code examples, using the AIMA book's code as a base to build upon, I got different results from each of the algorithms, which leads me to believe that I either: didn't structure the problem appropriately or didn't run the experiments (by way of the custom code) enough (iteration number was too low). I initially thought that a "lazy animal" coupled with a human as a "competitor" would make for a great MiniMax problem/game, but going through the aforementioned programming experience, writing out the problem, and talking it over with peers, I have come to the conclusion that this is not the best approach. Though there may be several viable approaches, I believe the best to be reinforcement learning (RL) for the following several reasons:
 
-\subsection{How to add Citations and a References List}
+\begin{itemize}
+  \item Benefit 1
+  \item Benefit 2
+  \item Benefit 3
+\end{itemize}
 
-You can simply upload a \verb|.bib| file containing your BibTeX entries, created with a tool such as JabRef. Just remember to specify a bibliography style, as well as the filename of the \verb|.bib|. You can find a \href{https://www.overleaf.com/help/97-how-to-include-a-bibliography-using-bibtex}{video tutorial here} to learn more about BibTeX.
+Note that RL can be initialized with "demonstrations" purposeful training examples of a prescribed method on how to perform a task. In this case, a fitness plan solution could be provided by current or former pet owners, as well as crowdsourced.
+  
+\section{Explanation of References}
+As the needs be, I will reference the official textbook(s) for this course, as well as domain information outlined above and on the Web, and official documentation for open source and other programming tools necessary to build the executable portion of the project.
 
-If you have an \href{https://www.overleaf.com/user/subscription/plans}{upgraded account}, you can also import your Mendeley or Zotero library directly as a \verb|.bib| file, via the upload menu in the file-tree.
+In addition to the preceding types of resources, if possible, I will make use of a pet activity tracker in the real-world, and run tests with my own pet dog - if performed, these types of tests (experiments) would use less computational resources, as simulation would not be necessary. However, it is worth noting that they would/will take longer than simulations to run. The advantage to these types of tests however, is more domain-accurate results (data), which is good for drawing conclusions, and performing future research.
 
-\subsection{Good luck!}
-
-We hope you find Overleaf useful, and do take a look at our \href{https://www.overleaf.com/learn}{help library} for more tutorials and user guides! Please also let us know if you have any feedback using the Contact Us link at the bottom of the Overleaf menu --- or use the contact form at \url{https://www.overleaf.com/contact}.
-
-\bibliographystyle{alpha}
+\newpage
+\bibliographystyle{plain}
+\raggedright
 \bibliography{main}
 
 \end{document}
